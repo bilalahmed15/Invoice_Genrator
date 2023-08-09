@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+    </style>
+
+<head>
+    <title>All Invoices</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>All Invoices</h1>
+        <ul>
+            {% for invoice in invoices %}
+                <li><a href="{{ url_for('view_invoice', invoice_id=invoice.id) }}">Invoice {{ invoice.id }} - {{ invoice.user.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+</html>
